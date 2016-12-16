@@ -15,6 +15,9 @@ class Window(QtGui.QWidget):
         self.warp1_slider.setStyleSheet(self.stylesheet())
         self.setStyleSheet("background-color: black;")
 
+        self.button = QtGui.QPushButton("OK", self)
+        self.button.setStyleSheet(self.buttonstyle())
+
         vbox = QtGui.QVBoxLayout(self)
         vbox.addWidget(self.warp1_slider)
         self.setLayout(vbox)
@@ -56,7 +59,37 @@ class Window(QtGui.QWidget):
                     border-radius: 0px;
                 }
             """
+    def buttonstyle(self):
+        return """
+                QSlider::groove:horizontal {
+                    height: 50px;
 
+                    border: 0px solid #abc;
+                    }
+
+                QSlider::sub-page:horizontal {
+                    background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
+                        stop: 0 #333, stop: 1 #aaa);
+                    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+                        stop: 0 #333, stop: 1 #aaa);
+                    height: 40px;
+                }
+
+                QSlider::add-page:horizontal {
+                    background: #222;
+                    border: 2px solid gray;
+                    height: 40px;
+                }
+
+                QSlider::handle:horizontal {
+                    background: #000;
+                    width: 35px;
+                    border: 2px solid white;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    border-radius: 0px;
+                }
+            """
 if __name__ == '__main__':
     import sys
     app = QtGui.QApplication(sys.argv)
