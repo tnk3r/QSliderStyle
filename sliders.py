@@ -1,13 +1,8 @@
 from PyQt4 import QtGui, QtCore
 
-
-
 class Window(QtGui.QWidget):
     def __init__(self):
-
         QtGui.QWidget.__init__(self)
-        self.setWindowTitle('Control Panel')
-
         self.setFixedSize(600, 300)
         self.warp1_slider = QtGui.QSlider(1, self)
         self.warp1_slider.setFixedSize(500, 60)
@@ -29,7 +24,6 @@ class Window(QtGui.QWidget):
 
     def calc_slider1(self, event):
         print self.warp1_slider.value()
-
 
     def stylesheet(self):
         return """
