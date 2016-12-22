@@ -1,4 +1,4 @@
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui
 
 class Window(QtGui.QWidget):
     def __init__(self):
@@ -10,24 +10,26 @@ class Window(QtGui.QWidget):
         self.warp1_slider.sliderMoved.connect(self.calc_slider1)
         self.warp1_slider.setStyleSheet(self.stylesheet())
         self.warp1_slider.setValue(50)
+        self.warp1_slider.move(20, 180)
         self.button = QtGui.QPushButton("OK", self)
         self.button.setStyleSheet(self.buttonstyle())
         self.button.setFixedSize(100, 60)
-        self.button.move(280, 50)
+        self.button.move(420, 80)
+        self.button.clicked.connect(app.quit)
 
         self.arrow = QtGui.QPushButton(self)
         self.arrow.setStyleSheet(self.arrowstyle())
-        self.arrow.setFixedSize(76, 136)
+        self.arrow.setFixedSize(55, 100)
+        self.arrow.move(50, 30)
 
-        vbox = QtGui.QVBoxLayout(self)
-        vbox.addWidget(self.button)
-        vbox.addWidget(self.warp1_slider)
-        self.setLayout(vbox)
-        self.setGeometry(100,100,200,200)
         self.show()
+        self.raise_()
 
     def calc_slider1(self, event):
         print self.warp1_slider.value()
+
+    def printLeft(self, event):
+        print "Left button"
 
     def stylesheet(self):
         return """
@@ -56,36 +58,35 @@ class Window(QtGui.QWidget):
                     border-radius: 0px;
                 }
             """
+
     def buttonstyle(self):
         return """
                 QPushButton {
                     color: white;
                     background-color: rgb(50, 50, 50);
-                    border-style: outset;
+                    border-style: solid;
                     border-width: 2px;
                     border-radius: 5px;
                     border-color: white;
                     font: bold 35px;
                     font-style: italic;
-                    padding: 6px;
                 }
                 QPushButton::pressed {
                     background-color: rgb(200, 200, 200);
                     border-style: inset;
                 }
             """
+
     def arrowstyle(self):
 
         return """
             QPushButton {
-                color: white;
-                background-color: rgb(10, 10, 10);
-                image: url(arrowRight_normal.jpg);
+                background-image: url(arrowLeft_normal.jpg);
+                border-style: inset;
             }
             QPushButton::pressed {
-                background-color: rgb(10, 10, 10);
                 border-style: inset;
-                image: url(arrowRight_pressed.jpg);
+                image: url(arrowLeft_pressed.jpg);
             }
         """
 
