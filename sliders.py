@@ -11,6 +11,7 @@ class Window(QtGui.QWidget):
         self.warp1_slider.setStyleSheet(self.stylesheet())
         self.warp1_slider.setValue(50)
         self.warp1_slider.move(20, 180)
+
         self.button = QtGui.QPushButton("OK", self)
         self.button.setStyleSheet(self.buttonstyle())
         self.button.setFixedSize(100, 60)
