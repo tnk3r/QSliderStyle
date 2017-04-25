@@ -1,8 +1,13 @@
 from PyQt4 import QtGui
+import os, sys
 
 class Window(QtGui.QWidget):
     def __init__(self):
         QtGui.QWidget.__init__(self)
+        os.chdir(str(os.path.dirname(os.path.abspath(sys.argv[0]))))
+        os.chdir("..")
+        print sys.executable
+
         self.setFixedSize(600, 300)
         self.setStyleSheet("background-color: black;")
         self.warp1_slider = QtGui.QSlider(1, self)
@@ -25,8 +30,16 @@ class Window(QtGui.QWidget):
         self.arrow.setFixedSize(55, 100)
         self.arrow.move(50, 30)
 
+        self.label = QtGui.QLabel("", self)
+        self.label.setStyleSheet("color: white;")
+        self.label.setFixedSize(600, 50)
+        self.label.move(30, 30)
+
+        self.label.setText(os.getcwd())
+
         self.show()
         self.raise_()
+
 
     def calc_slider1(self, event):
         print self.warp1_slider.value()
@@ -84,12 +97,12 @@ class Window(QtGui.QWidget):
 
         return """
             QPushButton {
-                background-image: url(arrowLeft_normal.jpg);
+                background-image: url(Resources/arrowLeft_normal.jpg);
                 border-style: inset;
             }
             QPushButton::pressed {
                 border-style: inset;
-                image: url(arrowLeft_pressed.jpg);
+                image: url(Resources/arrowLeft_pressed.jpg);
             }
         """
 
