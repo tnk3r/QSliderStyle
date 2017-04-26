@@ -4,8 +4,9 @@ import os, sys
 class Window(QtGui.QWidget):
     def __init__(self):
         QtGui.QWidget.__init__(self)
-        os.chdir(str(os.path.dirname(os.path.abspath(sys.argv[0]))))
-        os.chdir("..")
+        # Temp fix For pyinstaller .app bundling on osx to fix the cwd for Resources/images.
+        #os.chdir(str(os.path.dirname(os.path.abspath(sys.argv[0]))))
+        #os.chdir("..")
         print sys.executable
 
         self.setFixedSize(600, 300)
